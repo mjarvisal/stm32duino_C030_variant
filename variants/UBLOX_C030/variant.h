@@ -74,12 +74,15 @@ enum {
   PE3, //D15
   PE1, //D16
   PE7, //D17
-  PA3, //D18/A0
-  PC0, //D19/A1
-  PC3, //D20/A2
-  PA4, //D21/A3
-  PB7, //D22/A4
-  PB6, //D23/A5
+  PB6, //D18
+  PB7, //D19
+  PC13, //D20
+  PA3, //D21/A0
+  PC0, //D22/A1
+  PC3, //D23/A2
+  PA4, //D24/A3
+  PB7_2, //D25/A4
+  PB6_2, //D26/A5
   PEND
 };
 // Enum defining Arduino style alias for analog pin number --> Ax
@@ -105,9 +108,11 @@ enum {
 //On-board LED pin number
 #define LED_BUILTIN             14
 #define LED_GREEN               LED_BUILTIN
+#define LED_BLUE                16
+#define LED_RED                 15
 
 //On-board user button
-#define USER_BTN                PC_13
+#define USER_BTN                D20
 
 
 //SPI definitions
@@ -117,8 +122,8 @@ enum {
 #define SCK                     13 // Default for Arduino connector compatibility
 
 //I2C Definitions
-#define SDA                     14 // Default for Arduino connector compatibility
-#define SCL                     15 // Default for Arduino connector compatibility
+#define SDA                     18 // Default for Arduino connector compatibility
+#define SCL                     19 // Default for Arduino connector compatibility
 
 //Timer Definitions
 //Do not use timer used by PWM pins when possible. See PinMap_PWM in PeripheralPins.c
@@ -130,9 +135,9 @@ enum {
 
 // UART Definitions
 // Define here Serial instance number to map on Serial generic name
-#define SERIAL_UART_INSTANCE    x //ex: 2 for Serial2 (USART2)
+#define SERIAL_UART_INSTANCE    1 //ex: 2 for Serial2 (USART2)
 // DEBUG_UART could be redefined to print on another instance than 'Serial'
-//#define DEBUG_UART              ((USART_TypeDef *) U(S)ARTX) // ex: USART3
+#define DEBUG_UART              ((USART_TypeDef *) USART1) // ex: USART3
 
 // UART Emulation (uncomment if needed, required TIM1)
 //#define UART_EMUL_RX            PX_n // PinName used for RX
@@ -140,8 +145,8 @@ enum {
 
 // Default pin used for 'Serial' instance (ex: ST-Link)
 // Mandatory for Firmata
-#define PIN_SERIAL_RX           PD_9
-#define PIN_SERIAL_TX           PD_8
+#define PIN_SERIAL_RX           PA_10
+#define PIN_SERIAL_TX           PA_9
 
 #ifdef __cplusplus
 } // extern "C"
